@@ -3,7 +3,7 @@ services:
   - type: pserv
     name: db
     env: docker
-    dockerfilePath: './path/to/Dockerfile' # 提供指向 Dockerfile 的路径
+    dockerfilePath: './db/Dockerfile' # 提供指向 Dockerfile 的路径
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: somewordpress
@@ -22,7 +22,7 @@ services:
   - type: web
     name: wordpress
     env: docker
-    dockerfilePath: './path/to/Dockerfile' # 提供指向另一个 Dockerfile 的路径
+    dockerfilePath: './wordpress/Dockerfile' # 提供指向另一个 Dockerfile 的路径
     envVars:
       - key: WORDPRESS_DB_HOST
         value: db:3306
@@ -36,6 +36,3 @@ services:
       name: wordpress_data
       mountPath: /var/www/html
       sizeGB: 10 # 指定磁盘大小
-    ports:
-      - port: 80
-      - port: 443
